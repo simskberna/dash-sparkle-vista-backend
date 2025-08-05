@@ -20,3 +20,8 @@ def device_usage(user=Depends(get_current_user), db: Session = Depends(get_db)):
 def product_performance(user=Depends(get_current_user), db: Session = Depends(get_db)):
     repo = AnalyticsRepository(db)
     return [{"product": p.product_name, "sales": p.sales, "revenue": p.revenue} for p in repo.get_product_performance()]
+
+@router.get("/analytics/overall-metrics")
+def overall_metrics(user=Depends(get_current_user), db: Session = Depends(get_db)):
+    repo = AnalyticsRepository(db)
+    return [{"total_revenue": p.total_revenue, "total_revenue_change":p.total_revenue_change, "sales": p.sales,"sales_change":p.sales_change, "active_users": p.active_users, "active_users_change": p.active_users_change} for p in repo.get_overall_metrics()]

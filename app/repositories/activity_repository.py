@@ -21,4 +21,4 @@ class ActivityRepository:
             .order_by(func.date(UserActivity.timestamp))
             .all()
         )
-        return [{"date": str(r[0]), "count": r[2] } for r in results]
+        return [{"date": str(r[0]), "count": r[1] } for r in results]

@@ -1,5 +1,6 @@
 from app.database import Base, engine, SessionLocal
-from app.models.analytics import Revenue, DeviceUsage, ProductPerformance
+from app.models.analytics import Revenue, DeviceUsage, ProductPerformance, OverallMetrics
+
 
 def init_data():
     Base.metadata.create_all(bind=engine)
@@ -25,6 +26,11 @@ def init_data():
             ProductPerformance(product_name="Product A", sales=5000, revenue=2000),
             ProductPerformance(product_name="Product B", sales=4500, revenue=2500),
             ProductPerformance(product_name="Product C", sales=8000, revenue=3500),
+        ])
+
+    if not db.query(OverallMetrics).first():
+        db.add_all([
+            OverallMetrics(total_revenue=4523189,total_revenue_change=20.1,active_users=2350, active_users_change=180.1, sales=12234, sales_change=19),
         ])
 
     db.commit()
