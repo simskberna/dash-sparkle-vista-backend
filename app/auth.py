@@ -16,6 +16,13 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 def hash_password(password: str):
     return pwd_context.hash(password)
 
+def get_password_hash(password: str) -> str:
+    try:
+        return pwd_context.hash(password)
+    except Exception as e:
+        print(f"Password hashing error: {e}")
+        return password
+
 def verify_password(password:str, hashed:str):
     return pwd_context.verify(password,hashed)
 
