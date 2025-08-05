@@ -15,7 +15,6 @@ def init_data():
             # Create admin user
             admin_user = User(
                 email="admin@admin.com",
-                full_name="Admin User",
                 password_hash=get_password_hash("admin123"),
                 is_active=True
             )
