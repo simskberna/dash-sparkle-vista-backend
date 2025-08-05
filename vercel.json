@@ -1,5 +1,5 @@
+
 {
-  "version": 2,
   "builds": [
     {
       "src": "app/main.py",
@@ -11,10 +11,5 @@
       "src": "/(.*)",
       "dest": "app/main.py"
     }
-  ],
-  "functions": {
-    "app/main.py": {
-      "maxDuration": 30
-    }
-  }
+  ]
 }
